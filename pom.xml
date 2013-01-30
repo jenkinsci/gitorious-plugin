@@ -3,12 +3,12 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>1.466</version><!-- which version of Jenkins is this plugin built against? -->
+    <version>1.500</version><!-- which version of Jenkins is this plugin built against? -->
   </parent>
 
   <groupId>org.jenkins-ci.plugins</groupId>
   <artifactId>gitorious</artifactId>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.1.1-SNAPSHOT</version>
   <packaging>hpi</packaging>
   <name>Jenkins Gitorious plugin</name>
   <description>Adds Gitorious integration to Jenkins</description>
