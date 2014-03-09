@@ -75,7 +75,8 @@ public class GitoriousStatus implements UnprotectedRootAction {
         LOGGER.log(Level.INFO, "Got payload" + payload);
         String url2 = jsonObject.getJSONObject("repository").getString("url").replace("https://", "git://");
         String branch = jsonObject.getString("ref");
-        return gitStatus.doNotifyCommit(url2 + ".git", branch);
+        String sha1 = jsonObject.getString("after");
+        return gitStatus.doNotifyCommit(url2 + ".git", branch, sha1);
     }
 
     private static final Logger LOGGER = Logger.getLogger(GitoriousStatus.class.getName());
