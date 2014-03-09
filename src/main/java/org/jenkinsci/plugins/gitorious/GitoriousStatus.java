@@ -11,6 +11,9 @@ import javax.inject.Inject;
 import javax.servlet.ServletException;
 import java.io.IOException;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * @author Kohsuke Kawaguchi
  */
@@ -69,8 +72,12 @@ public class GitoriousStatus implements UnprotectedRootAction {
 
         // HTTP clone access for gitorious is done by adding "git." to the front of the hostname,
         // but the payload URL doesn't come that way. So I added a check in case someone is using HTTP access in jenkins.
+        LOGGER.log(Level.INFO, "Got payload" + payload);
         String url2 = jsonObject.getJSONObject("repository").getString("url").replace("https://", "git://");
         String branch = jsonObject.getString("ref");
         return gitStatus.doNotifyCommit(url2 + ".git", branch);
     }
+
+    private static final Logger LOGGER = Logger.getLogger(GitoriousStatus.class.getName());
+
 }
