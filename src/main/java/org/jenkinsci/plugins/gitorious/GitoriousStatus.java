@@ -64,7 +64,7 @@ public class GitoriousStatus implements UnprotectedRootAction {
         }
      */
 
-    public HttpResponse doNotifyCommit(@QueryParameter String payload)  throws ServletException, IOException {
+    public HttpResponse doNotifyCommit(@QueryParameter(required=true) String payload)  throws ServletException, IOException {
     	JSONObject jsonObject = JSONObject.fromObject( payload );
 
         // HTTP clone access for gitorious is done by adding "git." to the front of the hostname,
