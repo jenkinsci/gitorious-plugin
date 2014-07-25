@@ -71,7 +71,6 @@ public class GitoriousStatus implements UnprotectedRootAction {
         // but the payload URL doesn't come that way. So I added a check in case someone is using HTTP access in jenkins.
         String url2 = jsonObject.getJSONObject("repository").getString("url").replace("https://", "git://");
         String branch = jsonObject.getString("ref");
-        String sha1 = jsonObject.getString("after");
-        return gitStatus.doNotifyCommit(url2 + ".git", branch, sha1);
+        return gitStatus.doNotifyCommit(url2 + ".git", branch, null);
     }
 }
