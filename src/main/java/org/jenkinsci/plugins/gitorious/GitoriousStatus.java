@@ -65,14 +65,14 @@ public class GitoriousStatus implements UnprotectedRootAction {
      */
 
     public HttpResponse doNotifyCommit(@QueryParameter String payload)  throws ServletException, IOException {
-    	JSONObject jsonObject = JSONObject.fromObject( payload );
+        JSONObject jsonObject = JSONObject.fromObject( payload );
 
         // HTTP clone access for gitorious is done by adding "git." to the front of the hostname,
         // but the payload URL doesn't come that way. So I added a check in case someone is using HTTP access in jenkins.
         String url2 = jsonObject.getJSONObject("repository").getString("url").replace("://", "://git.");
-        gitStatus.doNotifyCommit(url2 + ".git", null);
+        gitStatus.doNotifyCommit(url2 + ".git", null, null);
 
-    	String url = jsonObject.getJSONObject("repository").getString("url");
-    	return gitStatus.doNotifyCommit(url + ".git", null);
+        String url = jsonObject.getJSONObject("repository").getString("url");
+        return gitStatus.doNotifyCommit(url + ".git", null, null);
     }
 }
